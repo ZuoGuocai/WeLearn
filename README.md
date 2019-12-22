@@ -15,6 +15,8 @@ https://www.paddlepaddle.org.cn/
 
 - 华为
 
+https://openeuler.org/
+
 - oracle
 
 https://www.oracle.com/database/technologies/oracle-database-software-downloads.html
