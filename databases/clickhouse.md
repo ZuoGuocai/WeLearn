@@ -1,10 +1,25 @@
+clickhouse 入门
+
 # 配置密码
 
 ```
 
 vi /etc/clickhouse-server/users.xml
 
+
+配置成明文
+<password>qwerty</password>
+
+
+PASSWORD=$(base64 < /dev/urandom | head -c8); echo "$PASSWORD"; echo -n "$PASSWORD" | sha1sum | tr -d '-' | xxd -r -p | sha1sum | tr -d '-'
+配置成密文
+<password_sha256_hex>65e84be33532fb784c48129675f9eff3a682b27168c0ea744b2cf58ee02337c5</password_sha256_hex>
+
 systemctl restart clickhouse-server
+```
+# 基本查询
+
+```
 
 clickhouse-client -h 172.24.126.3   -d default -m -u default  --password admin
 
