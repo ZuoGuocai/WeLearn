@@ -1,4 +1,4 @@
-clickhouse 入门
+clickhouse 快速上手
 
 # 配置密码
 
