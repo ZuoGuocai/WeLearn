@@ -1,9 +1,17 @@
 grafana html-----------nginx header------------- kibana for aws (opendistroforelasticsearch-kibana)
 
+# kibana 
+
+opendistro_security
+
+tag cloud 
+
+
 
 # nginx 代理认证
 ---
 
+```
 
 server {
         listen 443 ssl;
@@ -30,9 +38,14 @@ server {
 
 
 ```
-# kibana 
-
-tag cloud 
 
 
-# grafana 
+
+# grafana html  iframe 
+
+
+
+```
+
+
+```
