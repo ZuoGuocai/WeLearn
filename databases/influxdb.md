@@ -1,3 +1,27 @@
+# influxdb
+
+```
+create user "admin" with password 'admin' with all privileges;
+influx -username 'admin' -password 'admin@123';
+use collectdb;
+show measurements;
+show field keys;
+DROP SERIES FROM 'measurement_name'
+drop  measurement  hosts；
+
+CREATE RETENTION POLICY "delete policy" ON "collectdb" DURATION 720h REPLICATION 1 DEFAULT;
+SHOW RETENTION POLICIES ON collectdb;
+
+show tag values from hosts with key="host" where availability_zone =~ /m1.tiny/
+
+```
+
+
+
+
+
+# influxdb api
+
 ```
 #!/usr/bin/env bash
 # author: zuoguocai@126.com
@@ -27,6 +51,16 @@ do
         eval ${run}  
 
 done<  ${tmp_file}
+
+
+```
+
+# grafana variables
+
+```
+
+ip	show tag values from hosts with key="ip" where uuid=~ /$uuid/				
+hostname	show tag values from hosts with key="instance" where uuid=~ /$uuid/			
 
 
 ```
