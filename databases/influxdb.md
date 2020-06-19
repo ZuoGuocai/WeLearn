@@ -2,7 +2,7 @@
 
 ```
 create user "admin" with password 'admin' with all privileges;
-influx -username 'admin' -password 'admin@123';
+influx -username 'admin' -password 'admin';
 use collectdb;
 show measurements;
 show field keys;
