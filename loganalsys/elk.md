@@ -60,3 +60,15 @@ server {
 </iframe>
 
 ```
+
+```
+grep -vE "^;|#"  /etc/grafana/grafana.ini
+
+[security]
+
+allow_embedding = true
+
+[panels]
+disable_sanitize_html = true
+
+```
