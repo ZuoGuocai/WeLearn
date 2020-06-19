@@ -9,6 +9,12 @@ tag cloud
 分享
 
 # nginx 代理认证
+
+参考文档:https://discuss.elastic.co/t/auto-authenticating-to-iframe-embedded-kibana-dashboard/46091
+
+
+echo -n username:password | base64
+
 ---
 
 ```
