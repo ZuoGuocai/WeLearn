@@ -1,3 +1,34 @@
+
+# influxdb install 
+
+```
+wget https://dl.influxdata.com/influxdb/releases/influxdb-1.8.0.x86_64.rpm
+
+udo yum localinstall influxdb-1.8.0.x86_64.rpm
+
+wget -P /usr/local/share/collectd https://raw.githubusercontent.com/collectd/collectd/master/src/types.db
+
+vi /etc/influxdb/influxdb.conf
+
+[http]
+  auth-enabled = true
+
+[[collectd]]
+  enabled = true
+  bind-address = ":25826"
+  database = "collectdb"
+  retention-policy = ""
+  typesdb = "/usr/local/share/collectd/types.db"
+  batch-size = 5000
+  batch-pending = 10
+  batch-timeout = "10s"
+  read-buffer = 0
+
+```
+
+
+
+
 # influxdb
 
 ```
