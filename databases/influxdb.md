@@ -1,4 +1,23 @@
 
+collectd-------> influxdb ---------> grafana
+
+---
+
+# collectd 
+
+```
+
+vi /etc/collectd.conf
+LoadPlugin network
+<Plugin network>
+   server "172.x.x.x" "25826"
+</Plugin>
+
+
+
+```
+
+
 # influxdb install 
 
 ```
