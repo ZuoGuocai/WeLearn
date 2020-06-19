@@ -49,3 +49,14 @@ server {
 <iframe src="https://kibana7.xxx.com/app/kibana#/visualize/edit/14da2260-a700-11ea-93ba-a9a125fcf025?embed=true&_g=()" height="900" width="1200" style="POSITION:absolute;RIGHT:500px; LEFT:-50px; TOP:-100px;"></iframe>
 
 ```
+
+
+```
+<iframe id="inlineFrameExample"
+    title="Inline Frame Example"
+    width="1200"
+    height="900"
+    src="https://map.baidu.com">
+</iframe>
+
+```
