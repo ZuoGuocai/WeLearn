@@ -104,6 +104,28 @@ done<  ${tmp_file}
 
 
 ```
+# influxdb backup and restore
+
+
+```
+#!/usr/bin/env bash
+# author: zuoguocai@126.com
+# influxdb backup and restore
+
+influxd  backup  -database   collectdb     /tmp/backup
+
+cd /tmp/backup
+influxd restore -metadir /var/lib/influxdb/meta ./
+influxd restore -database collectdb -datadir /var/lib/influxdb/data ./
+
+
+
+```
+
+
+
+
+
 
 # grafana variables
 
