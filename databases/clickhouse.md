@@ -34,3 +34,14 @@ echo ',,,'|clickhouse-client -h 172.24.126.3   -d default -m -u default  --passw
 
 
 ```
+
+#  clickhouse 代理 和  同步工具
+
+```
+
+https://github.com/Vertamedia/chproxy
+
+
+https://github.com/long2ice/mysql2ch
+
+```
