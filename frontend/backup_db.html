@@ -1,0 +1,153 @@
+<html>
+<title> 备份语法生成器 </title>
+<head>
+
+<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<link href="https://magicbox.bk.tencent.com/static_api/v3/assets/bootstrap-3.3.4/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://magicbox.bk.tencent.com/static_api/v3/assets/daterangepicker-2.0.5/daterangepicker-2.0.css" rel="stylesheet">
+<link href="https://magicbox.bk.tencent.com/static_api/v3/bk/css-pro/bk.css" rel="stylesheet">
+
+<script src="https://magicbox.bk.tencent.com/static_api/v3/assets/js/jquery-1.10.2.min.js"></script>
+<script src="https://magicbox.bk.tencent.com/static_api/v3/assets/daterangepicker-2.0.5/moment.min.js"></script>
+<script src="https://magicbox.bk.tencent.com/static_api/v3/assets/daterangepicker-2.0.5/daterangepicker.js"></script>
+
+
+<style>
+pre code {
+  background-color: #99CC99;
+  border: 1px solid #999;
+  display: block;
+  padding: 20px;
+}
+
+
+
+</style>
+</head>
+
+
+
+<body>
+<h1 align="center"> 备份语法生成器 </h1>
+
+<p> 仅支持mysql数据库  </p>
+
+
+<br>
+<br>
+
+ <!--HTML-->
+        <!--p class="magic-desc">日期范围选择器</p-->
+        <div class="bk-form" style="width:600px;">
+            <div class="bk-form-item is-required">
+                <label class="bk-label" style="width:150px;">选择日期</label>
+                <div class="bk-form-content" style="margin-left:150px;">
+                    <input type="text" class="bk-form-input daterangepicker_demo" id="daterangepicker_demo1" placeholder="选择日期...">
+                    
+                </div>
+                
+<div class="bk-form-item is-required">                
+             
+<label class="bk-label" style="width:150px;">选择主机</label>
+<div class="bk-form-content" style="margin-left:150px;"> 
+<select name="host" size="1" id='select1' class="bk-form-input daterangepicker_demo">
+    <option value="" style="display: none;" disabled selected>请选择主机</option>
+    <option value="172.23.249.1">172.23.249.1</option>
+    <option value="172.23.249.2">172.23.249.2</option>
+    <option value="172.23.249.3">172.23.249.3</option>
+    <option value="172.23.249.4">172.23.249.4</option>
+</select>
+</div>
+</div>
+
+<div class="bk-form-item is-required">  
+<label class="bk-label" style="width:150px;">选择数据库</label>
+<div class="bk-form-content" style="margin-left:150px;"> 
+<select name="database" size="1" id='select2' class="bk-form-input daterangepicker_demo">
+    <option value="" style="display: none;" disabled selected>请选择DB</option>
+    <option value="zabbix1">zabbix1</option>
+    <option value="zabbix2">zabbix2</option>
+    <option value="zabbix3">zabbix3</option>
+    <option value="zabbix4">zabbix4</option>
+</select>
+</div>
+</div>
+
+
+
+
+
+</div>
+
+
+           
+        </div>
+        <!--JS-->
+    <script src="https://magicbox.bk.tencent.com/static_api/v3/assets/daterangepicker-2.0.5/moment.min.js"></script>
+    <script src="https://magicbox.bk.tencent.com/static_api/v3/assets/daterangepicker-2.0.5/daterangepicker.js"></script>
+    <script type="text/javascript">
+        $(function() {
+            //daterangepicker_demo1_js_start
+            // 选择单个日期
+            $('#daterangepicker_demo1').daterangepicker({
+                locale: {
+                    format: 'YYYY-MM-DD'
+                },
+                autoApply: false, //选择日期后自动设置值
+                singleDatePicker: true //单选选择一个日期  
+            });
+           
+            
+        });
+    </script>
+
+
+<br>
+<br>
+
+<button id="button1">点击生成语句</button>
+<pre>
+  <code id="mysql">
+  
+  </code>
+</pre>
+
+
+
+
+<!--script type="text/javascript">
+  
+    $('#select1,#select2').change(function(){
+       <!--var sql = $('#select1').val() +' ' + $('#select2').val();
+       var host = $('#select1').val();
+       var db = $('#select2').val();
+       sql = "mysqldump  -h " + host + " -uroot -p -d " + db
+       <!--alert($(this).val());>
+       $("#mysql").text(sql);
+    });
+    
+    
+</script -->
+
+<script>
+
+       
+$("#button1").click(function(){
+    host = $('#select1').val();
+    db = $('#select2').val();
+    dtime = $('#daterangepicker_demo1').val();
+    sql = "mysqldump  -h " + host + " -uroot -p -d " + db  + ' > ' + dtime + '.sql';
+    $("#mysql").text(sql);
+    
+    
+         
+});
+</script>
+
+
+
+
+
+
+</body>
+</html>
