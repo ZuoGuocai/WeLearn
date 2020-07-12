@@ -1,0 +1,97 @@
+
+
+
+pipeline {
+    agent any
+    options {
+    	timestamps()
+    }
+    parameters {
+    	string(name: 'BUILD_PARA', defaultValue: '-j 16', description: 'Parameters which will be passed to build command')
+    	booleanParam(name: 'RUN_PMD_TEST', defaultValue: true, description: 'Whether trigger PMD check.')
+    }
+    environment {
+    	RUN_PMD_TEST = "${params.RUN_PMD_TEST}"
+    }
+    stages {
+        stage('Build') {
+            steps {
+            	sh 'printenv'
+                echo 'This is a build step.'
+                echo "Build parameters is ${BUILD_PARA}"
+            }
+        }
+        stage('Test') {
+        	parallel {
+        		stage('Unit Test') {
+        			steps {
+        				sh '''
+        					echo 'This is a unit test step.'
+        					if [ ! -d testreport ];then
+        						mkdir testreport
+        					fi
+        					# Clean up old test report
+        					rm testreport/*
+        					echo "success" > testreport/test-report.html
+        				'''
+        				stash includes: '**/testreport/*.html', name: 'report'
+        			}
+        		}
+        		stage('Code Static Check') {
+        			steps {
+        				echo 'This is a code static check step.'
+        			}
+        		}
+        	}
+        }
+		stage('PMD Check') {
+			when {
+				environment name: 'RUN_PMD_TEST', value: 'true'
+			}
+			steps {
+				echo 'This is a PMD check step.'
+			}
+		}
+		stage('UAT Test') {
+			steps {
+				echo 'This is a UAT test step.'
+				script {
+					def targetPlatform = ['Windowns', 'Unix', 'MaxOS']
+					for (int i=0; i<targetPlatform.size(); i++) {
+						echo "Testing on platform ${targetPlatform[i]}."
+					}
+				}
+			}
+		}
+        stage('Deploy') {
+            steps {
+                echo 'This is a deploy step.'
+                script {
+          			env.RELEASE_SCOPE = input message: '请选择发布类型：', ok: 'Release!',
+          			parameters: [choice(name: 'RELEASE_SCOPE', choices: '开发环境\n测试环境\n生产环境', description: '请选择此次发布的类型。')]
+        		}
+                echo "This is a deploy step to ${env.RELEASE_SCOPE}."
+                unstash 'report'
+                archiveArtifacts allowEmptyArchive: true, artifacts: '**/testreport/*.html', fingerprint: true
+            }
+            post {
+	        	failure {
+        			echo "Pipeline failed, warn someone ASAP."
+	        	}
+	        	success {
+        			echo "Success deploy and trigger another pipeline."
+        			//build 'demo-An-Easy-Pipeline'
+	        	}
+	        	aborted {
+        			echo "Pipeline has been aborted."
+        			echo "Clean up some local file."
+	        	}
+	        }
+        }
+    }
+    post {
+    	always {
+    		echo "Thank you for trying pipeline sample."
+    	}
+    }
+}
