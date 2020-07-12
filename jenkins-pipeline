@@ -1,4 +1,8 @@
+参数化构建过程  
 
+1. 字符参数  BUILD_PARA    -j 16    Parameters which will be passed to build command 
+
+2. 布尔值参数  RUN_PMD_TEST   默认值  Whether trigger PMD check.
 
 
 pipeline {
