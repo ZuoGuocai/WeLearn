@@ -66,9 +66,23 @@ mkdir nginx/{defaults,files,handlers,tasks,templates,meta}  -p
     └── templates
         └── nginx.conf.j2
 
+```
+
+```
+cat nginx_deploy.yml 
+---
+- name: nginx playbook
+  hosts: all
+  remote_user: root
+#  gather_facts: no
+
+  roles:
+    - nginx
 
 
 ```
+
+
 
 
 - 插件
@@ -93,7 +107,7 @@ https://github.com/dl528888/ansible-examples
 
 https://gitee.com/colben/ansible
 
-tidb 
+tidb https://docs.pingcap.com/zh/tidb/stable/maintain-tidb-using-ansible
 
 ansible git modules
 
