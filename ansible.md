@@ -34,6 +34,8 @@ ansible_ssh_pass = xxx
 
 -vvv  verbose
 
+--limit my_app 
+
 ansible  -i hosts  web_group  -m ping
 ansible  -i hosts  web_group    --list-hosts
 ansible-playbook   -i hosts    playbook01.yml    -e  'my_host=web_group'
@@ -41,7 +43,7 @@ ansible-playbook   -i hosts   nginx.yml -C
 ansible-playbook  -i hosts  --syntax-check   nginx_deploy.yml
 
 
-
+关闭 gather_facts: no
 ```
 
 - playbook + roles
@@ -91,6 +93,9 @@ https://github.com/dl528888/ansible-examples
 
 https://gitee.com/colben/ansible
 
+tidb 
+
+ansible git modules
 
 - 参考文件
 
