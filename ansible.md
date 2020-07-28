@@ -38,6 +38,7 @@ ansible  -i hosts  web_group  -m ping
 ansible  -i hosts  web_group    --list-hosts
 ansible-playbook   -i hosts    playbook01.yml    -e  'my_host=web_group'
 ansible-playbook   -i hosts   nginx.yml -C
+ansible-playbook  -i hosts  --syntax-check   nginx_deploy.yml
 
 
 
@@ -47,6 +48,22 @@ ansible-playbook   -i hosts   nginx.yml -C
 
 ```
 mkdir nginx/{defaults,files,handlers,tasks,templates,meta}  -p
+
+└── nginx
+    ├── defaults
+    │   └── main.yml
+    ├── files
+    │   └── nginx-1.19.1.tar.gz
+    ├── handlers
+    │   └── main.yml
+    ├── meta
+    │   └── main.yml
+    ├── tasks
+    │   ├── install.yml
+    │   └── main.yml
+    └── templates
+        └── nginx.conf.j2
+
 
 
 ```
@@ -66,10 +83,17 @@ profile_tasks
 
 ```
 
+- ansbile api  web 
+
 - 样例库
 
 https://github.com/dl528888/ansible-examples
 
+https://gitee.com/colben/ansible
+
+
 - 参考文件
+
 https://www.cnblogs.com/yanjieli/p/10969299.html
+
 https://www.ibm.com/developerworks/cn/linux/1608_lih_ansible/index.html
