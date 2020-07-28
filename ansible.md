@@ -36,6 +36,8 @@ ansible_ssh_pass = xxx
 
 --limit my_app 
 
+-c local 
+
 ansible  -i hosts  web_group  -m ping
 ansible  -i hosts  web_group    --list-hosts
 ansible-playbook   -i hosts    playbook01.yml    -e  'my_host=web_group'
