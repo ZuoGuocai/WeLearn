@@ -1,9 +1,10 @@
 - ansible config
 
 ```
-roles_path    = /opt/ansible_demo/roles
-host_key_checking = False
-callback_whitelist = profile_tasks
+forks         = 100
+roles_path    = /opt/ansible_demo/roles  # 指定 roles 位置
+host_key_checking = False           # 不检查 host key
+callback_whitelist = profile_tasks  # 统计task执行时间插件
 
 [ssh_connection]
 pipelining = True
@@ -24,30 +25,51 @@ ansible_ssh_pass = xxx
 
 ```
 
+- 命令行参数
 
--C  
+```
+-C  check
 
--e 
+-e  args
+
+-vvv  verbose
 
 ansible  -i hosts  web_group  -m ping
-
-```
-
-
-
-```
+ansible  -i hosts  web_group    --list-hosts
+ansible-playbook   -i hosts    playbook01.yml    -e  'my_host=web_group'
+ansible-playbook   -i hosts   nginx.yml -C
 
 
 
 ```
 
+- playbook + roles
+
+```
+mkdir nginx/{defaults,files,handlers,tasks,templates,meta}  -p
 
 
 ```
 
 
+- 插件
+```
+profile_tasks
+
 
 ```
 
 
+- 异步和并发
 ```
+
+
+```
+
+- 样例库
+
+https://github.com/dl528888/ansible-examples
+
+- 参考文件
+https://www.cnblogs.com/yanjieli/p/10969299.html
+https://www.ibm.com/developerworks/cn/linux/1608_lih_ansible/index.html
