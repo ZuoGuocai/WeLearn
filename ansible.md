@@ -112,6 +112,8 @@ https://gitee.com/colben/ansible
 
 tidb https://docs.pingcap.com/zh/tidb/stable/maintain-tidb-using-ansible
 
+/opt/kubeoperator/core/resource/kubeasz/roles
+
 ansible git modules
 
 - 参考文件
