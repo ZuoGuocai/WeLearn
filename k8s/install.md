@@ -77,5 +77,26 @@ spec:
   type: NodePort
 
 ```
+- cat  showdoc-ingress.yaml
 
+```
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: my-ingress-for-showdoc  # Ingress 的名字，仅用于标识
+  namespace: yunwei
+spec:
+  tls:
+  - hosts:
+    - zuoguocai.com
+    secretName: nginx-ingress-tls-secret
+  rules:                      # Ingress 中定义 L7 路由规则
+  - host: zuoguocai.com   # 根据 virtual hostname 进行路由（请使用您自己的域名）
+    http:
+      paths:                  # 按路径进行路由
+      - path: /
+        backend:
+          serviceName: showdoc  # 指定后端的 Service 为之前创建的 nginx-service
+          servicePort: 80
 
+```
