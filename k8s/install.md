@@ -10,6 +10,22 @@ kubectl get deployment  -n kube-system  --field-selector metadata.name=kuboard  
 ```
 
 
+## dns
+zuoguocai.com   172.23.250.132
+
+## haproxy
+```
+listen k8s-nodes
+bind 172.23.250.132:80
+server node01 172.24.126.114:80 check inter 2000 rise 2 fall 5
+server node02 172.24.126.115:80 check inter 2000 rise 2 fall 5
+listen k8s-nodes-tls
+bind 172.23.250.132:443
+server node01 172.24.126.114:443 check inter 2000 rise 2 fall 5
+server node02 172.24.126.115:443 check inter 2000 rise 2 fall 5
+
+```
+
 ## namespace
 ```
 kubectl  create namespace  yunwei
