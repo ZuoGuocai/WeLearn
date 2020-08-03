@@ -1,6 +1,24 @@
-# namespace
+## kubectl 命令集
+```
+kubectl delete pods -l app=nginx -n default
+kubectl get  pods -A |grep nginx
+kubectl exec   nginx-deployment-cc7df4f8f-9j89m   -- printenv |grep SERVICE
+kubectl get services kube-dns --namespace=kube-system
+kubectl run curl --image=radial/busyboxplus:curl -i --tty 
+kubectl logs  -f  nginx-deployment-674ff86d-ktnvq   -n default
+kubectl get deployment  -n kube-system  --field-selector metadata.name=kuboard  -o yaml
+```
+
+
+## namespace
 ```
 kubectl  create namespace  yunwei
+```
+
+## secret 
+
+```
+kubectl create secret tls nginx-ingress-tls-secret  --cert=zuoguocai.com.crt --key=zuoguocai.com.key  -n yunwei
 ```
 
 ## 本地存储 hostPath
