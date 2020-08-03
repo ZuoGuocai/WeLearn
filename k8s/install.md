@@ -1,6 +1,6 @@
-
+# namespace
 ```
-kubeclt   create namespace  yunwei
+kubectl  create namespace  yunwei
 ```
 
 ## 本地存储 hostPath
@@ -160,4 +160,9 @@ spec:
           serviceName: showdoc  # 指定后端的 Service 为之前创建的 nginx-service
           servicePort: 80
 
+```
+## troubshooting
+
+```
+kubectl logs -n yunwei $(kubectl get pod -n yunwei -l app=showdoc -o jsonpath='{.items[0].metadata.name}') -f
 ```
