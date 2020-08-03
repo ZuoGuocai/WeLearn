@@ -3,6 +3,67 @@
 kubeclt   create namespace  yunwei
 ```
 
+## 本地存储 hostPath
+
+```
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: showdoc
+  name: showdoc
+  namespace: yunwei
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: showdoc
+  template:
+    metadata:
+      labels:
+        app: showdoc
+    spec:
+      containers:
+      - image: registry.cn-shenzhen.aliyuncs.com/star7th/showdoc:latest
+        name: showdoc
+        resources:
+          requests:
+            cpu: 0.5
+            memory: 500Mi
+          limits:
+            cpu: 0.5
+            memory: 500Mi
+        ports:
+          - name: http
+            containerPort: 80
+            protocol: TCP
+        volumeMounts:
+        - name: showdoc-data
+          mountPath: /var/www/html
+      volumes:
+      - name: showdoc-data
+        hostPath:
+          path: /ccdata/k8s/data/showdoc
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: showdoc
+  namespace: yunwei
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 80
+  selector:
+    app: showdoc
+  type: NodePort
+
+```
+
+
 ## 动态NFS
 - showdoc-pvc.yaml
 ```
