@@ -63,3 +63,14 @@ ENTRYPOINT ./gva-server
 #    docker run -it -p 8888:8888 --name gva-server-v1 gva-server:1.0
 #      ```
 ```
+
+
+
+
+```
+docker-compose up
+
+docker-compose up --build
+
+docker-compose up -d
+```
