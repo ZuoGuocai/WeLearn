@@ -83,7 +83,10 @@ docker-compose up -d
 
 vi /etc/docker/daemon.yaml
 
-bip
+{
+    "bip":"192.168.0.1/24"
+}
+
 
 - docker-compose 桥接网络冲突
 
