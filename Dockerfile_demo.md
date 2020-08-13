@@ -128,8 +128,13 @@ http://www.xiaomaidong.com/?p=1336
 
 https://www.cnblogs.com/atuotuo/p/7250695.html
 ```
+
+- docker 支持的网络类型
 https://docs.docker.com/network/
 
+- docker-machine 支持的驱动
+
+https://docs.docker.com/machine/drivers/
 
 
 参考网络:https://godleon.github.io/blog/Docker/docker-network-bridge/
