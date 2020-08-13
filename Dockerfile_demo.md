@@ -87,6 +87,16 @@ vi /etc/docker/daemon.yaml
     "bip":"192.168.0.1/24"
 }
 
+{
+  "bip": "192.168.1.5/24",
+  "fixed-cidr": "192.168.1.5/25",
+  "fixed-cidr-v6": "2001:db8::/64",
+  "mtu": 1500,
+  "default-gateway": "10.20.1.1",
+  "default-gateway-v6": "2001:db8:abcd::89",
+  "dns": ["10.20.1.2","10.20.1.3"]
+}
+
 
 - docker-compose 桥接网络冲突
 
