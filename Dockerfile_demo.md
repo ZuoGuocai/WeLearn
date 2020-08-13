@@ -100,3 +100,14 @@ networks:
 
 ```
 
+
+- docker swarm  网络冲突
+
+```
+#docker network create -d overlay --subnet=192.168.0.0/24 --attachable myOverlay
+在不同的hosts(M, W1 与 W2)上面新建立containers,（busybox1, busybox2 和 busybox3）
+
+
+## run busybox1 on manage node
+# docker run -itd --name=busybox1 --network=myOverlay busybox /bin/sh
+```
