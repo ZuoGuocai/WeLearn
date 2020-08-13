@@ -99,6 +99,9 @@ vi /etc/docker/daemon.yaml
 
 - docker-compose 桥接网络冲突
 
+
+![image](https://raw.githubusercontent.com/ZuoGuocai/WeLearn/master/images/)
+
 ```
 docker network create -d bridge --subnet=192.168.1.0/24 --gateway=192.168.1.254 test
 
