@@ -65,7 +65,7 @@ ENTRYPOINT ./gva-server
 ```
 
 
-
+# 常用
 
 ```
 docker-compose up
@@ -76,3 +76,27 @@ docker-compose up -d
 
  docker ps --no-trunc
 ```
+# docker 网络冲突解决
+
+
+- docker0 网络冲突
+
+vi /etc/docker/daemon.yaml
+
+bip
+
+- docker-compose 桥接网络冲突
+
+```
+docker network create -d bridge --subnet=192.168.1.0/24 --gateway=192.168.1.254 test
+
+
+docker-compose.yaml
+
+networks:
+  default:
+    external:
+      name: test
+
+```
+
