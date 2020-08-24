@@ -15,4 +15,15 @@ kubectl edit  deployment
 
 
 kubectl api-versions|grep batch
+
+
+
+kubectl get  replicaset  -A
+
+
+DESIRED 期望数量  CURRENT 当前数量
+ 
+ 
+ 
+Controlled by  Events
 ```
