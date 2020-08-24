@@ -8,4 +8,11 @@ kubectl get daemonset  --namespace=kube-system
 
 kubectl edit  daemonset  kube-proxy   --namespace=kube-system
 
+
+# status 
+
+kubectl edit  deployment
+
+
+kubectl api-versions|grep batch
 ```
